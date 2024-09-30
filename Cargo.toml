@@ -1,0 +1,17 @@
+[package]
+name = "simple-key-monitor"
+description = "A simple tool to monitor key presses"
+version = "0.1.0"
+edition = "2021"
+readme = "README.md"
+license = "MIT"
+
+[profile.release]
+opt-level = 3
+codegen-units = 1
+debug = false
+lto = "fat"
+
+[dependencies]
+colored = "2.1.0"
+uiohook-rs = "0.2.3"
