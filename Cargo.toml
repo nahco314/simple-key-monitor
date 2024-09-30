@@ -5,6 +5,7 @@ version = "0.1.0"
 edition = "2021"
 readme = "README.md"
 license = "MIT"
+repository = "https://github.com/nahco314/simple-key-monitor"
 
 [profile.release]
 opt-level = 3
@@ -12,6 +13,33 @@ codegen-units = 1
 debug = false
 lto = "fat"
 
+[profile.dist]
+inherits = "release"
+
 [dependencies]
 colored = "2.1.0"
 uiohook-rs = "0.2.3"
+
+[workspace.metadata.dist]
+dist = true
+cargo-dist-version = "0.22.1"
+ci = "github"
+installers = ["shell", "powershell"]
+targets = [
+    "aarch64-apple-darwin",
+    "x86_64-apple-darwin",
+    "x86_64-unknown-linux-gnu",
+    # "x86_64-pc-windows-msvc",
+]
+install-path = "CARGO_HOME"
+install-updater = false
+
+[workspace.metadata.dist.dependencies.apt]
+libx11-dev = { stage = ["build", "run"] }
+libxtst-dev = { stage = ["build", "run"] }
+libxt-dev = { stage = ["build", "run"] }
+libxinerama-dev = { stage = ["build", "run"] }
+libx11-xcb-dev = { stage = ["build", "run"] }
+libxkbcommon-dev = { stage = ["build", "run"] }
+libxkbcommon-x11-dev = { stage = ["build", "run"] }
+libxkbfile-dev = { stage = ["build", "run"] }
